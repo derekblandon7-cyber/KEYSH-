@@ -3,7 +3,8 @@
   CATÁLOGO BASE - ACCESORIOS PARA MUJER
   =====================================
   Cómo leer este archivo:
-  - Todo lo que está entre <!-- y --> (HTML) o entre /* y */ (CSS) es un COMENTARIO.
+  - Todo lo que esté escrito dentro de un comentario HTML (entre los signos de menor y
+    mayor con los guiones) o entre /* y */ en el CSS es un COMENTARIO.
     El navegador lo ignora; sirve para explicarte qué hace cada parte.
   - Donde veas "CAMBIA ESTO" es lo que tienes que editar tú.
   - Este archivo tiene 3 partes: <head> (configuración), <style> (diseño) y <body> (contenido).
@@ -270,7 +271,37 @@
 
     </div>
 
-    <!-- Para otra categoría (Pulseras, Anillos, Combos): copia desde <h2> hasta el </div> final de la categoría -->
+    <!-- ===================== CATEGORÍA 3: ANILLOS ===================== -->
+    <h2>Anillos</h2>
+    <div class="productos">
+
+      <article class="producto">
+        <div class="foto">Foto ANI-01</div>
+        <div class="info">
+          <p class="nombre">Anillo ajustable de flor</p>
+          <p class="detalle">Código ANI-01 · Talla ajustable</p>   <!-- en anillos conviene indicar la talla -->
+          <p class="precio">C$ 150</p>
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20ANI-01"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="producto">
+        <div class="foto">Foto ANI-02</div>
+        <div class="info">
+          <p class="nombre">Set de 3 anillos finos</p>
+          <p class="detalle">Código ANI-02 · Acero dorado</p>
+          <p class="precio">C$ 280</p>
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20ANI-02"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Para otra categoría (Pulseras, Combos): copia desde <h2> hasta el </div> final de la categoría -->
 
   </main>
 
