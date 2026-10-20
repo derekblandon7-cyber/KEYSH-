@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--
+  CATÁLOGO BASE - ACCESORIOS PARA MUJER
+  =====================================
+  Cómo leer este archivo:
+  - Todo lo que está entre <!-- y --> (HTML) o entre /* y */ (CSS) es un COMENTARIO.
+    El navegador lo ignora; sirve para explicarte qué hace cada parte.
+  - Donde veas "CAMBIA ESTO" es lo que tienes que editar tú.
+  - Este archivo tiene 3 partes: <head> (configuración), <style> (diseño) y <body> (contenido).
+-->
+
+<!-- Le dice al navegador que esto es una página web moderna (HTML5) y que el idioma es español -->
+<html lang="es">
+
+<head>
+  <!-- Permite que se vean bien los acentos y la ñ -->
+  <meta charset="UTF-8">
+
+  <!-- Hace que la página se adapte al celular. Sin esta línea se vería diminuta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Título que aparece en la pestaña del navegador y en Google. CAMBIA ESTO -->
+  <title>Nombre del negocio | Accesorios para mujer</title>
+
+  <!-- Descripción que Google muestra debajo del título. CAMBIA ESTO -->
+  <meta name="description" content="Aretes, collares y pulseras. Pide por WhatsApp.">
+
+  <!-- Carga dos tipos de letra gratis de Google Fonts:
+       Cormorant Garamond (elegante, para títulos) y Jost (limpia, para textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== COLORES =====
+       Aquí defines la paleta una sola vez y la usas en todo el archivo con var(--nombre).
+       Para cambiar el look de toda la página, cambia solo estos valores.
+       Códigos de color en Canva o en google "selector de color". */
+    :root {
+      --fondo: #FBF8FA;      /* color de fondo de la página */
+      --texto: #2B2230;      /* color de las letras */
+      --acento: #6B2D5C;     /* color principal: botones y títulos (ciruela) */
+      --suave: #EBDDE8;      /* color suave para fotos vacías y líneas */
+      --dorado: #9A7B3F;     /* detalle para los precios */
+    }
+
+    /* ===== BASE =====
+       "*" significa "todos los elementos". box-sizing evita que el padding agrande las cajas */
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;                         /* quita el margen que el navegador pone por defecto */
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: "Jost", system-ui, sans-serif;  /* si Jost no carga, usa otra letra del sistema */
+      line-height: 1.5;                  /* espacio entre líneas, mejora la lectura */
+    }
+
+    /* ===== ENCABEZADO ===== */
+    header {
+      text-align: center;                /* centra el texto */
+      padding: 3rem 1.25rem 2rem;        /* espacio interno: arriba, lados, abajo (rem = tamaño de letra) */
+    }
+
+    header h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.75rem;
+      font-weight: 600;
+      color: var(--acento);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 32rem;                  /* evita líneas muy largas */
+      font-size: 1.05rem;
+    }
+
+    /* ===== SECCIONES DE PRODUCTOS (Aretes, Collares...) ===== */
+    main {
+      max-width: 64rem;                  /* ancho máximo en computadora */
+      margin: 0 auto;                    /* "auto" a los lados = centrado */
+      padding: 0 1.25rem 2rem;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--suave);   /* línea fina debajo del título */
+    }
+
+    /* ===== CUADRÍCULA DE PRODUCTOS =====
+       grid = organiza los productos en columnas.
+       En celular: 2 columnas. En pantallas grandes: 3 y luego 4 (ver @media más abajo) */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);   /* 2 columnas iguales */
+      gap: 1rem;                               /* espacio entre productos */
+    }
+
+    @media (min-width: 700px)  { .productos { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1000px) { .productos { grid-template-columns: repeat(4, 1fr); } }
+
+    /* ===== UN PRODUCTO ===== */
+    .producto {
+      border: 1px solid var(--suave);
+      border-radius: 0.5rem;             /* esquinas redondeadas */
+      overflow: hidden;                  /* corta lo que se salga de las esquinas */
+      background: #fff;
+      display: flex;
+      flex-direction: column;            /* apila foto, texto y botón de arriba a abajo */
+    }
+
+    /* Espacio de la foto. Mientras no tengas fotos, se ve como un bloque de color */
+    .foto {
+      aspect-ratio: 1 / 1;               /* hace la foto cuadrada */
+      background: var(--suave);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--acento);
+      font-size: 0.9rem;
+    }
+
+    /* Cuando pongas una foto real con <img>, esto la ajusta al cuadro sin deformarla */
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex: 1;                           /* empuja el botón hacia abajo en todas las tarjetas */
+    }
+
+    .nombre  { font-weight: 500; margin: 0; }
+    .detalle { font-size: 0.85rem; margin: 0; opacity: 0.75; }
+    .precio  { color: var(--dorado); font-weight: 500; margin: 0.25rem 0 0.5rem; }
+
+    /* ===== BOTÓN DE WHATSAPP ===== */
+    .boton {
+      display: block;
+      margin-top: auto;                  /* lo pega al fondo de la tarjeta */
+      background: var(--acento);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;             /* quita el subrayado del enlace */
+      padding: 0.7rem;
+      border-radius: 0.4rem;
+      font-weight: 500;
+    }
+
+    .boton:hover,
+    .boton:focus-visible { background: #4F1F44; }   /* se oscurece al pasar el dedo o el mouse */
+
+    /* ===== PIE DE PÁGINA ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem 3rem;
+      border-top: 1px solid var(--suave);
+      font-size: 0.95rem;
+    }
+
+    footer a { color: var(--acento); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== ENCABEZADO: nombre y frase del negocio ===== -->
+  <header>
+    <h1>Nombre del negocio</h1>                              <!-- CAMBIA ESTO -->
+    <p>Accesorios para mujer. Elige tu favorito y pídelo por WhatsApp.</p>   <!-- CAMBIA ESTO -->
+  </header>
+
+  <main>
+
+    <!-- ===================== CATEGORÍA 1: ARETES ===================== -->
+    <h2>Aretes</h2>
+    <div class="productos">
+
+      <!--
+        ===== BLOQUE DE UN PRODUCTO =====
+        Para agregar un producto nuevo: copia desde <article> hasta </article>,
+        pégalo debajo y cambia los textos.
+      -->
+      <article class="producto">
+
+        <!-- FOTO: por ahora es un bloque de color con el código.
+             Cuando tengas la foto:
+             1) Crea una carpeta llamada "fotos" junto a este archivo y sube la imagen (ej: ARE-01.jpg).
+             2) Borra la línea de "Foto ARE-01" y escribe en su lugar:
+                <img src="fotos/ARE-01.jpg" alt="Aretes de perla">
+             El "alt" describe la foto para personas con lectores de pantalla y para Google. -->
+        <div class="foto">Foto ARE-01</div>
+
+        <div class="info">
+          <p class="nombre">Aretes de perla</p>               <!-- nombre del producto -->
+          <p class="detalle">Código ARE-01 · Acero dorado</p> <!-- código y material -->
+          <p class="precio">C$ 250</p>                        <!-- precio (cambia la moneda si hace falta) -->
+
+          <!--
+            BOTÓN DE WHATSAPP. Es un enlace (<a>) con esta forma:
+              https://wa.me/NÚMERO?text=MENSAJE
+
+            - NÚMERO: código de país + número, sin espacios ni signos.
+              Nicaragua es 505. Ejemplo: 50588887777. CAMBIA 505XXXXXXXX por el número real.
+            - MENSAJE: lo que aparece ya escrito en el chat.
+              En un enlace no se pueden dejar espacios, por eso cada espacio se escribe %20
+              y la coma se escribe %2C.
+              "Hola, quiero el producto ARE-01" -> Hola%2C%20quiero%20el%20producto%20ARE-01
+            - Cada producto lleva SU propio código en el mensaje.
+          -->
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20ARE-01"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- Segundo producto (ya copiado y cambiado, como ejemplo) -->
+      <article class="producto">
+        <div class="foto">Foto ARE-02</div>
+        <div class="info">
+          <p class="nombre">Aros dorados medianos</p>
+          <p class="detalle">Código ARE-02 · Acero dorado</p>
+          <p class="precio">C$ 200</p>
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20ARE-02"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ===================== CATEGORÍA 2: COLLARES ===================== -->
+    <h2>Collares</h2>
+    <div class="productos">
+
+      <article class="producto">
+        <div class="foto">Foto COL-01</div>
+        <div class="info">
+          <p class="nombre">Collar con dije de luna</p>
+          <p class="detalle">Código COL-01 · Plateado</p>
+          <p class="precio">C$ 300</p>
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20COL-01"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="producto">
+        <div class="foto">Foto COL-02</div>
+        <div class="info">
+          <p class="nombre">Gargantilla de perlas</p>
+          <p class="detalle">Código COL-02 · Perlas cultivadas</p>
+          <p class="precio">C$ 350</p>
+          <a class="boton"
+             href="https://wa.me/505XXXXXXXX?text=Hola%2C%20quiero%20el%20producto%20COL-02"
+             target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Para otra categoría (Pulseras, Anillos, Combos): copia desde <h2> hasta el </div> final de la categoría -->
+
+  </main>
+
+  <!-- ===== PIE DE PÁGINA: horario y contacto ===== -->
+  <footer>
+    <p>Atención por WhatsApp de lunes a sábado, de 9:00 a. m. a 6:00 p. m.</p>   <!-- CAMBIA ESTO -->
+    <p>
+      <a href="https://wa.me/505XXXXXXXX" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      <!-- Si tienen Instagram, agrega otro enlace así:
+           · <a href="https://instagram.com/SU_USUARIO" target="_blank" rel="noopener">Instagram</a> -->
+    </p>
+  </footer>
+
+</body>
+</html>
